@@ -19,4 +19,5 @@ TODO List
  -Read React tutorials
 
 TODO List for me;)
- -i will try to implement Redux as it should greatly help with managing state of components(now it doesnt seems like much but when you have components of them it will become much worth)
+
+ -i will try to implement Redux as it should greatly help with managing state of components(now it doesnt seems like much but when you have components of them it will become much worth) (sometime later we have to get the basics first ;))

@@ -17,3 +17,6 @@ TODO List
  -Read some github docs (at least about fork , pull request branches and so on)
  
  -Read React tutorials
+
+TODO List for me;)
+ -i will try to implement Redux as it should greatly help with managing state of components(now it doesnt seems like much but when you have components of them it will become much worth)

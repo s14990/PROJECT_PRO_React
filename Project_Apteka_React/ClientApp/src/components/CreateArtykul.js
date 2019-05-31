@@ -9,6 +9,7 @@ export class CreateArtykul extends Component {
     //we need to get data for kategorias and producent
     //in the state we save our new Artykul data for sending it
     //as request body to create method in controller
+    //dont put initial values as null in states
     constructor(props) {
         super(props);
         this.state = {

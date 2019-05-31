@@ -12,7 +12,7 @@ export class EditArtykul extends Component {
         super(props);
         this.state = {
             kategorias: [], producents: [], loading: true, err: '', disabled: true,
-            id: '',nazwa: '', kod: '', illosc: 0, kategoria: null, producent: null
+            id: '',nazwa: '', kod: '', illosc: 0, kategoria: '', producent: ''
         };
         const art_id = this.props.match.params.id;
 
@@ -41,7 +41,8 @@ export class EditArtykul extends Component {
 
 
 
-    //We need to use PUT method to update artykul
+    //We need to use PUT method to update artykul with id
+    // so link will look like 'api/Artykuls/4' with methid PUT and body as full data on that artykul
     handleUpdate() {
         fetch('api/Artykuls/'+this.state.id, {
             method: 'PUT',

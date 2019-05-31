@@ -45,6 +45,8 @@ export class Artykuls extends Component {
     // Delete artykul (send request to api and refresh this component)
     // wait time is important to let changes to take place inside database
     // so we can load new data (or you can try to remove deleted item from artykuls)
+
+    //try to use window.confirm its very simple 
     handleDelete(id) {
         if (window.confirm("Do you want to delete Artykul" + id) == true) 
                 fetch('api/Artykuls/' + id, {

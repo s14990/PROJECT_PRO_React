@@ -98,15 +98,15 @@ export class CreateArtykul extends Component {
     validateData() {
         this.setState({ err: "", disabled: false });
         if (this.state.nazwa.length <= 3) 
-            this.setState({ err: "Nazwa nie moż być krótrsza od 3 znaków", disabled: true });
-        if (this.state.kod.length <= 3)
-            this.setState({ err: "kod nie moż być krótrsza od 3 znaków", disabled: true });
-        if (this.state.illosc < 0)
-            this.setState({ err: "Illosc nie moze byc ujemna", disabled: true });
-        if (this.state.kategoria === '' )
-            this.setState({ err: "Wybierz Kategorije", disabled: true });
-        if (this.state.kategoria === '' )
-            this.setState({ err: "Wybierz Producenta", disabled: true });
+            this.setState({ err: " Nazwa nie moż być krótrsza od 3 znaków ", disabled: true });
+        else if (this.state.kod.length <= 3)
+            this.setState({ err: " kod nie moż być krótrsza od 3 znaków ", disabled: true });
+        else if (this.state.illosc < 0)
+            this.setState({ err: " Illosc nie moze byc ujemna ", disabled: true });
+        else if (this.state.kategoria === '' )
+            this.setState({ err: " Wybierz Kategorije ", disabled: true });
+        else if (this.state.kategoria === '' )
+            this.setState({ err: " Wybierz Producenta ", disabled: true });
 
     }
 

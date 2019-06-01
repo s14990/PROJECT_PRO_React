@@ -48,7 +48,7 @@ export class Artykuls extends Component {
 
     //try to use window.confirm its very simple 
     handleDelete(id) {
-        if (window.confirm("Do you want to delete Artykul" + id) == true) 
+        if (window.confirm("Do you want to delete Artykul" + id) === true) 
                 fetch('api/Artykuls/' + id, {
                 method: 'DELETE'
             }).then(setTimeout(this.refresh, 300));                    

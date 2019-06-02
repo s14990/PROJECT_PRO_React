@@ -118,7 +118,7 @@ export class EditArtykul extends Component {
     //<option value="" disabled></option>- mean you cant choose none
     renderArtykulsForm() {
         return (
-            <form className="Add_Order_Form">
+            <form>
                 <div class="form-group">
                     <label htmlFor="nazwa">Nazwa</label>
                     <input type="text" className="form-control" name="nazwa" value={this.state.nazwa} onChange={this.handleInputChange} />
@@ -148,7 +148,7 @@ export class EditArtykul extends Component {
                     </select>
                 </div>
                 {this.state.err.length > 0 && <p className="Error">{this.state.err}</p>}
-                <button className="btn btn-primary" type="button" onClick={this.handleUpdate} disabled={this.state.disabled}>Edytuj Artykul</button>
+                <button className="btn btn-primary" type="button" onClick={this.handleUpdate} disabled={this.state.disabled}>Save kategoria</button>
             </form>
         );
     }

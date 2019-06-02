@@ -28,6 +28,16 @@ export class NavMenu extends Component {
                 <Glyphicon glyph='th-list' /> Artykuls
               </NavItem>
              </LinkContainer>
+            <LinkContainer to={'/kategorias'}>
+              <NavItem>
+               <Glyphicon glyph='th-list' /> Kategorias
+              </NavItem>
+            </LinkContainer>
+            <LinkContainer to={'/producents'}>
+              <NavItem>
+               <Glyphicon glyph='th-list' /> Producents
+              </NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

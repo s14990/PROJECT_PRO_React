@@ -54,14 +54,14 @@ namespace Project_Apteka_React.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdKategoriaNavigation)
-                    .WithMany(p => p.Artykul)
+                entity.HasOne(d => d.Kategoria)
+                    .WithMany(p => p.Artykuls)
                     .HasForeignKey(d => d.IdKategoria)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Artykul_fk0");
 
-                entity.HasOne(d => d.IdProducentNavigation)
-                    .WithMany(p => p.Artykul)
+                entity.HasOne(d => d.Producent)
+                    .WithMany(p => p.Artykuls)
                     .HasForeignKey(d => d.IdProducent)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Artykul_fk1");

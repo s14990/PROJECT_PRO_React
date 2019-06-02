@@ -116,35 +116,36 @@ export class CreateArtykul extends Component {
     renderArtykulsForm() {
         return (
             <form className="Add_Order_Form">
-                <div>
+                <div class="form-group">
                     <label htmlFor="nazwa">Nazwa</label>
-                    <input type="text" className="field" name="nazwa" value={this.state.nazwa} onChange={this.handleInputChange} />
-
+                    <input type="text" className="form-control" name="nazwa" value={this.state.nazwa} onChange={this.handleInputChange} />
+                </div>
+                <div class="form-group">
                     <label htmlFor="kod">Kod</label>
-                    <input type="text" className="field" name="kod" value={this.state.kod} onChange={this.handleInputChange} />
-
+                    <input type="text" className="form-control" name="kod" value={this.state.kod} onChange={this.handleInputChange} />
+                </div>
                     <label htmlFor="illosc">Illosc</label>
-                    <input type="number" className="field" name="illosc" value={this.state.illosc} onChange={this.handleInputChange} />
-
+                <input type="number" className="form-control" name="illosc" value={this.state.illosc} onChange={this.handleInputChange} />
+                <div class="form-group">
                     <label htmlFor="kategoria">Kategoria</label>
-                    <select name="kategoria" value={this.state.kategoria} onChange={this.handleInputChange}>
+                    <select className="form-control" name="kategoria" value={this.state.kategoria} onChange={this.handleInputChange}>
                         <option value="" disabled></option>
                         {this.state.kategorias.map(kat =>
                             <option key={kat.idKategoria} value={kat.idKategoria} >{kat.nazwa}</option>
                         )}
                     </select>
-
+                </div>
+                <div class="form-group">
                     <label htmlFor="producent">Producent</label>
-                    <select name="producent" value={this.state.producent} onChange={this.handleInputChange}>
+                    <select className="form-control" name="producent" value={this.state.producent} onChange={this.handleInputChange}>
                         <option value="" disabled></option>
                         {this.state.producents.map(prod =>
                             <option key={prod.idProducent} value={prod.idProducent} >{prod.nazwa}</option>
                         )}
                     </select>
-
                 </div>
                 {this.state.err.length > 0 && <p className="Error">{this.state.err}</p>}
-                <button className="buttons" type="button" onClick={this.handleCreate} disabled={this.state.disabled}>Dodaj Nowy Artykul</button>
+                <button className="btn btn-primary" type="button" onClick={this.handleCreate} disabled={this.state.disabled}>Dodaj Nowy Artykul</button>
             </form>
         );
     }

@@ -27,6 +27,7 @@ namespace Project_Apteka_React.Controllers
             return _context.Artykul;
         }
 
+
         // GET: api/Artykuls/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetArtykul([FromRoute] int id)
@@ -91,6 +92,10 @@ namespace Project_Apteka_React.Controllers
             }
 
             _context.Artykul.Add(artykul);
+             var kat = await _context.Kategoria.FindAsync(artykul.IdKategoria);
+            kat.Artykuls.Add(artykul);
+            var prod = await _context.Kategoria.FindAsync(artykul.IdKategoria);
+            prod.Artykuls.Add(artykul);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetArtykul", new { id = artykul.IdArtykul }, artykul);

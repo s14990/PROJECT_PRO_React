@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project_Apteka_React.Models
 {
@@ -7,13 +8,14 @@ namespace Project_Apteka_React.Models
     {
         public Producent()
         {
-            Artykul = new HashSet<Artykul>();
+            Artykuls = new List<Artykul>();
         }
 
         public int IdProducent { get; set; }
         public string Nazwa { get; set; }
         public string Kraj { get; set; }
 
-        public ICollection<Artykul> Artykul { get; set; }
+        [InverseProperty("Producent")]
+        public List<Artykul> Artykuls { get; set; }
     }
 }

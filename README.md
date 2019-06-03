@@ -11,11 +11,11 @@ TODO List
  
  -Add same front-end for Producents and Kategorias
  
- -Clear front-end structure( from example components)
+ -Clear front-end structure( from example components) -Done
  
- -Change styles
+ -Change styles -Somewhat done
  
- -Make front look like something other then template
+ -Make front look like something other then template -Almost Done
  
  -Read some github docs (at least about fork , pull request branches and so on)
  

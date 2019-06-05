@@ -12,14 +12,14 @@ export class Artykuls extends Component {
    
     constructor(props){
         super(props);
-        this.state = { artykuls: [],kategorias: [],producents: [], loading: true };
+        this.state = { artykuls: [],filtered:[], word: '',kategorias: [],producents: [], loading: true };
 
         //fetch data from api when component is loaded
         //Should have used componentDidMount() (todo later)
         fetch('api/Artykuls')
             .then(response => response.json())
             .then(data => {
-                this.setState({ artykuls: data});
+                this.setState({ artykuls: data, filtered: data});
             });
         fetch('api/Producents')
             .then(response => response.json())
@@ -39,6 +39,9 @@ export class Artykuls extends Component {
         this.findProducentName = this.findProducentName.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.refresh = this.refresh.bind(this);
+        this.compareBy=this.compareBy.bind(this);
+        this.sortBy = this.sortBy.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
 
@@ -82,19 +85,69 @@ export class Artykuls extends Component {
     }
 
 
+    handleInputChange(event) {
+        const target = event.target;
+        let name = target.name;
+        let value = target.value;
+        switch (name) {
+            case 'word':
+                if (value != '') {
+                    var arts = this.state.artykuls;
+                    var new_art = new Array();
+                    for (var i = 0; i < arts.length; i++) {
+                        if (arts[i].nazwa.includes(value))
+                            new_art.push(arts[i]);
+                    }
+                    this.setState({ filtered: new_art, word: value });
+                }
+                else {
+                    var arts = this.state.artykuls;
+                    this.setState({ filtered: arts, word: '' });
+                }
+
+                break;
+            default:
+                console.log("Unknown");
+                break;
+        }
+    }
+
+
+    compareBy(key) {
+     return function (a, b) {
+       if (a[key] < b[key]) return -1;
+          if (a[key] > b[key]) return 1;
+       return 0;
+     };
+    }
+ 
+    sortBy(key) {
+        let arrayCopy = [...this.state.artykuls];
+    arrayCopy.sort(this.compareBy(key));
+        this.setState({ filtered: arrayCopy});
+    }
+
+
     //when called from render() returns actual html table that
     //map is something like for( var i in list)
     //you cant write js code inside html , but you need you use {} brackets
     renderArtykulsTable(artykuls) {
         return (
+            <div>
+            <form>
+                <div class="form-group">
+                    <label htmlFor="word">Wyszukiwanie po nazwie</label>
+                    <input type="text" className="form-control" name="word" value={this.state.word} onChange={this.handleInputChange} />
+                </div>
+            </form>
             <table className='table'>
                 <thead>
                     <tr>
-                        <th>Nazwa</th>
-                        <th>Kod</th>
-                        <th>Illosc</th>
-                        <th>Kategoria</th>
-                        <th>Producent</th>
+                        <th onClick={() => this.sortBy('nazwa')} >Nazwa</th>
+                        <th onClick={() => this.sortBy('kod')}>Kod</th>
+                        <th onClick={() => this.sortBy('illosc')} >Illosc</th>
+                        <th onClick={() => this.sortBy('idKategoria')}>Kategoria</th>
+                        <th onClick={() => this.sortBy('idProducent')}>Producent</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -110,7 +163,8 @@ export class Artykuls extends Component {
                         </tr>
                     )}
                 </tbody>
-            </table>
+                </table>
+                </div>
         );
     }
 
@@ -119,7 +173,7 @@ export class Artykuls extends Component {
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : this.renderArtykulsTable(this.state.artykuls);
+            : this.renderArtykulsTable(this.state.filtered);
 
         return (
             <div>

@@ -122,7 +122,7 @@ export class Artykuls extends Component {
     }
  
     sortBy(key) {
-        let arrayCopy = [...this.state.artykuls];
+        let arrayCopy = [...this.state.filtered];
     arrayCopy.sort(this.compareBy(key));
         this.setState({ filtered: arrayCopy});
     }

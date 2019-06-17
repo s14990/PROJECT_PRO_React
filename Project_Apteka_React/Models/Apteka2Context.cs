@@ -19,6 +19,8 @@ namespace Project_Apteka_React.Models
         public virtual DbSet<Kategoria> Kategoria { get; set; }
         public virtual DbSet<Producent> Producent { get; set; }
 
+        public virtual DbSet<User> User { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -93,6 +95,24 @@ namespace Project_Apteka_React.Models
                 entity.Property(e => e.Nazwa)
                     .IsRequired()
                     .HasMaxLength(30)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.IdUser);
+                entity.Property(e => e.IdUser).HasColumnName("Id_User");
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
         }

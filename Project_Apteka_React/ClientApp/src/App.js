@@ -11,6 +11,7 @@ import { EditKategoria } from './components/EditKategoria'
 import { Producents } from './components/Producents'
 import { CreateProducent } from './components/CreateProducent'
 import { EditProducent } from './components/EditProducent'
+import { Login } from './components/Login'
 
 
 
@@ -22,7 +23,7 @@ export default class App extends Component {
   render() {
     return (
       <Layout>
-        <Route exact path='/' component={Home} />
+        <Route exact path='/' component={Login} />
         <Route path='/artykuls' component={Artykuls} />
         <Route exact path='/artykul_new' component={CreateArtykul} />
         <Route exact path='/artykul_edit/:id' component={EditArtykul} />
